@@ -1,0 +1,59 @@
+#!/bin/bash
+#echo 'incompile' $TERM
+function indent() {
+  #echo XXXXX $?
+  c='s/^/       /'
+  case $(uname) in
+    Darwin) sed -l "$c";;
+    *)      sed -u "$c";;
+  esac
+}
+
+TOOLS=/buildpacks/nodejs/tools
+NODE_PATH=$TOOLS/node/bin
+
+PATH=$NODE_PATH:$PATH
+NODE=$NODE_PATH/node
+NPM="$NODE $TOOLS/node/bin/npm"
+
+#FOREWOMAN=`$NPM list` # | grep forewoman | wc -l `
+#echo $FOREWOMAN
+#exit 1
+#if [ $FOREWOMAN -eq 0 ]
+#then
+#    echo ">sdasdasd"
+#fi
+
+tput setaf 2
+echo -n "> Node.js buildpack $($NODE -v) | npm@$($NPM -v) "
+tput sgr0
+echo
+#BRANCH=$1
+
+SRC=$1 # /tmp/gummi/$BRANCH
+
+cd $SRC
+RES='x'
+$NPM config set color always
+$NPM install 2>&1 | indent
+x=${PIPESTATUS[0]}
+#echo ${PIPESTATUS[0]}
+
+#echo "npm done."
+#echo $x
+#exit 0
+exit $x
+#echo EEEEEE $? $RES
+
+#PROCFILE=$SRC/Procfile
+#echo $NPM
+#$NPM list
+
+#$NPM install
+#cat package.json
+#ping -c 1 google.com
+
+
+#ls -la
+
+

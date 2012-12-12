@@ -1,0 +1,38 @@
+#!/bin/bash
+echo "NJS BP"
+function indent() {
+  c='s/^/       /'
+  case $(uname) in
+    Darwin) sed -l "$c";;
+    *)      sed -u "$c";;
+  esac
+}
+
+#echo tetet $TERM
+
+TOOLS=/buildpacks/nodejs/tools
+NODE_PATH=$TOOLS/node/bin
+
+export PATH=node_modules/.bin/:$NODE_PATH:$PATH
+export NODE=$NODE_PATH/node
+export NPM="$NODE $TOOLS/node/bin/npm"
+echo @@@@@@@@@@@@@@@ $NODE
+#FOREWOMAN=`$NPM list` # | grep forewoman | wc -l `
+#echo $FOREWOMAN
+#exit 1
+#if [ $FOREWOMAN -eq 0 ]
+#then
+#    echo ">sdasdasd"
+#fi
+
+echo "> Node.js buildpack $($NODE -v) | npm@$($NPM -v) "
+
+#BRANCH=$1
+
+#SRC=$1 # /tmp/gummi/$BRANCH
+#PROCFILE=$SRC/Procfile
+
+#cd $SRC
+#$NPM install 2>&1 | indent
+
+
