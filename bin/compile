@@ -53,7 +53,7 @@ run_npm "config set color always"
 run_npm "install --production"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
-
+exit 0
 
 
 
