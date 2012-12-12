@@ -1,13 +1,89 @@
-#!/bin/bash
-#echo 'incompile' $TERM
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+# parse and derive params
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+# fail fast
+set -e
+
 function indent() {
-  #echo XXXXX $?
   c='s/^/       /'
   case $(uname) in
     Darwin) sed -l "$c";;
     *)      sed -u "$c";;
   esac
 }
+
+
+VERSION=0.8.15
+
+echo "-----> Fetching Node.js binaries"
+
+url="http://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-x64.tar.gz"
+curl $url -s -o - | tar xzf - -C $CACHE_DIR
+
+NODE_BINDIR=$CACHE_DIR/node-v$VERSION-linux-x64/bin/
+NODE=$NODE_BINDIR/node
+NPM=$NODE_BINDIR/npm
+
+
+echo "-----> Vendoring node into slug"
+mkdir -p "$BUILD_DIR/bin"
+cp "$NODE" "$BUILD_DIR/bin/node"
+
+
+
+
+function run_npm() {
+  command="$1"
+
+  cd $BUILD_DIR
+  HOME="$BUILD_DIR" $NPM $command 2>&1 | indent
+
+  if [ "${PIPESTATUS[*]}" != "0 0" ]; then
+    echo " !     Failed to $command dependencies with npm"
+    exit 1
+  fi
+}
+
+echo "-----> Installing dependencies with npm"
+run_npm "config set color always"
+run_npm "install --production"
+run_npm "rebuild"
+echo "Dependencies installed" | indent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#echo "Dependencies installed" | indent
+#$NPM -v
+
+# cd $NPM_DIR
+# curl https://npmjs.org/install.sh | clean=yes sh
+
+
+
+
+
+
+exit 1
 
 TOOLS=/buildpacks/nodejs/tools
 NODE_PATH=$TOOLS/node/bin
