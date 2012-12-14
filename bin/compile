@@ -5,6 +5,8 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 
+OLD_HOME=$HOME
+
 # fail fast
 set -e
 
@@ -27,6 +29,8 @@ url="http://nodejs.org/dist/v$VERSION/$NODE_ARCHIVE"
 ####curl $url -s -o - | tar xzf - -C $CACHE_DIR
 
 #curl http://nodejs.org/dist/v0.8.16/SHASUMS.txt -s -o - | grep node-v0.8.16-linux-x64.tar.gz > sums
+
+HOME=$CACHE_DIR
 
 NODE_BINDIR=$CACHE_DIR/node-v$VERSION-linux-x64/bin/
 NODE=$NODE_BINDIR/node
@@ -60,6 +64,9 @@ run_npm "config set color always"
 run_npm "install --production"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
+
+HOME=$OLD_HOME
+
 exit 0
 
 
