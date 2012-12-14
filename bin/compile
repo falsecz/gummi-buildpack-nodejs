@@ -20,7 +20,7 @@ function indent() {
 VERSION=0.8.15
 
 echo "-----> Fetching Node.js binaries"
-cd CACHE_DIR
+#cd $CACHE_DIR
 
 NODE_ARCHIVE="node-v$VERSION-linux-x64.tar.gz"
 url="http://nodejs.org/dist/v$VERSION/$NODE_ARCHIVE"
