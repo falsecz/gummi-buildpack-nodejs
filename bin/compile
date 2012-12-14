@@ -61,7 +61,7 @@ function run_npm() {
 
 echo "-----> Installing dependencies with npm"
 run_npm "config set color always"
-run_npm "install --production"
+run_npm "install --production --cache-min 999999"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
 
