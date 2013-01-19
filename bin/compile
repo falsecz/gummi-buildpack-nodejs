@@ -46,6 +46,8 @@ then
 	
 	echo Downloaded
 	ls -la $CACHE_DIR
+	echo "sdsdsd"
+	ls -la $CACHE_DIR/node-v$VERSION
 	# curl $url -s -o - | tar xzf - -C $CACHE_DIR
 else
 	echo Using cached node    
