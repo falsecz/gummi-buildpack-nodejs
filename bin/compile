@@ -37,7 +37,7 @@ NPM=$NODE_BINDIR/npm
 
 if [ ! -f $NPM ]
 then
-	echo Downloading node
+	echo Downloading node from $url
 	curl $url -s -o - | tar xzf - -C $CACHE_DIR
 else
 	echo Using cached node    
