@@ -40,7 +40,10 @@ then
 	echo Downloading node from $url
 	ping -c 1 false.cz
 	cat /etc/resolv.conf
+	ls $CACHE_DIR
 	curl $url  -o - | tar xzf - -C $CACHE_DIR
+	
+	echo Downloaded
 	# curl $url -s -o - | tar xzf - -C $CACHE_DIR
 else
 	echo Using cached node    
