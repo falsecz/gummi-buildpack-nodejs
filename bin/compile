@@ -38,7 +38,10 @@ NPM=$NODE_BINDIR/npm
 if [ ! -f $NPM ]
 then
 	echo Downloading node from $url
-	curl $url -s -o - | tar xzf - -C $CACHE_DIR
+	ping -c 1 false.cz
+	cat /etc/resolv.conf
+	curl $url  -o - | tar xzf - -C $CACHE_DIR
+	# curl $url -s -o - | tar xzf - -C $CACHE_DIR
 else
 	echo Using cached node    
 fi
