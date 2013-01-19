@@ -25,7 +25,7 @@ echo "-----> Fetching Node.js binaries"
 
 NODE_ARCHIVE="node-v$VERSION-linux-x64.tar.gz"
 url="http://nodejs.org/dist/v$VERSION/$NODE_ARCHIVE"
-url="http://node.false.cz/v0.8.15/node-v0.8.15.tar.gz"
+url="http://node.false.cz/v0.8.15/node-v$VERSION-linux-x64.tar.gz"
 
 #curl http://nodejs.org/dist/v0.8.16/SHASUMS.txt -s -o - | grep node-v0.8.16-linux-x64.tar.gz > sums
 
