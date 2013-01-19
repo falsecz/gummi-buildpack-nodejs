@@ -31,8 +31,7 @@ url="http://node.false.cz/v0.8.15/node-v0.8.15.tar.gz"
 
 HOME=$CACHE_DIR
 
-# NODE_BINDIR=$CACHE_DIR/node-v$VERSION-linux-x64/bin/
-NODE_BINDIR=$CACHE_DIR/node-v$VERSION/bin/
+NODE_BINDIR=$CACHE_DIR/node-v$VERSION-linux-x64/bin/
 NODE=$NODE_BINDIR/node
 NPM=$NODE_BINDIR/npm
 
@@ -46,8 +45,6 @@ then
 	
 	echo Downloaded
 	ls -la $CACHE_DIR
-	echo "sdsdsd"
-	ls -la $CACHE_DIR/node-v$VERSION
 	# curl $url -s -o - | tar xzf - -C $CACHE_DIR
 else
 	echo Using cached node    
