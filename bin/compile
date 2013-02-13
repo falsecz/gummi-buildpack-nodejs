@@ -41,10 +41,10 @@ then
 	# ping -c 1 false.cz
 	# cat /etc/resolv.conf
 	# ls -la $CACHE_DIR
-	curl $url  -o - | tar xzf - -C $CACHE_DIR
+	curl -s $url  -o - | tar xzf - -C $CACHE_DIR
 	
 	echo Downloaded
-	ls -la $CACHE_DIR
+	# ls -la $CACHE_DIR
 	# curl $url -s -o - | tar xzf - -C $CACHE_DIR
 else
 	echo Using cached node    
