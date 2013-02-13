@@ -52,7 +52,7 @@ fi
 
 
 
-$NPM cache list
+#$NPM cache list
 
 
 echo "-----> Vendoring node into slug"
