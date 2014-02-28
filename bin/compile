@@ -26,6 +26,7 @@ echo "-----> Fetching Node.js binaries"
 NODE_ARCHIVE="node-v$VERSION-linux-x64.tar.gz"
 url="http://nodejs.org/dist/v$VERSION/$NODE_ARCHIVE"
 url="http://node.false.cz/v0.8.15/node-v$VERSION-linux-x64.tar.gz"
+url="http://nodejs.org/dist/v0.10.26/node-v0.10.26-linux-x64.tar.gz"
 
 #curl http://nodejs.org/dist/v0.8.16/SHASUMS.txt -s -o - | grep node-v0.8.16-linux-x64.tar.gz > sums
 
@@ -42,12 +43,12 @@ then
 	# cat /etc/resolv.conf
 	# ls -la $CACHE_DIR
 	curl -s $url  -o - | tar xzf - -C $CACHE_DIR
-	
+
 	echo Downloaded
 	# ls -la $CACHE_DIR
 	# curl $url -s -o - | tar xzf - -C $CACHE_DIR
 else
-	echo Using cached node    
+	echo Using cached node
 fi
 
 
