@@ -3,5 +3,5 @@
 
 cat <<EOF
 config_vars:
-	PATH: bin:node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/buildpacks/nodejs/tools/node/bin/:/sbin
+	PATH: "bin:node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/buildpacks/nodejs/tools/node/bin/:/sbin"
 EOF
