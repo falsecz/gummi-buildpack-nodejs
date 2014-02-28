@@ -18,7 +18,7 @@ function indent() {
   esac
 }
 
-VERSION=0.8.15
+VERSION=0.10.26
 
 echo "-----> Fetching Node.js binaries"
 #cd $CACHE_DIR
